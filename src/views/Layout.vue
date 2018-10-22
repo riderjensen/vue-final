@@ -1,9 +1,6 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
-	<ul>
-		<li v-for="(film, i) in allFilms" :key="i">{{ film.title }}</li>
-	</ul>
+    <h1>This is a layout page</h1>
   </div>
 </template>
 
