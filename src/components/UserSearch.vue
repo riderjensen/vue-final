@@ -9,7 +9,8 @@
       @input="$v.name.$touch()"
       @blur="$v.name.$touch()"
     ></v-text-field>
-    <v-btn @click="submit">submit</v-btn>
+	<realmSearch/>
+    <v-btn v-on:click="$emit('userSubmit', name)">submit</v-btn>
     <v-btn @click="clear">clear</v-btn>
   </form>
 </template>
@@ -17,6 +18,7 @@
 <script>
 import { validationMixin } from "vuelidate";
 import { required, maxLength, email } from "vuelidate/lib/validators";
+import realmSearch from "@/components/RealmSearch.vue";
 
 export default {
   mixins: [validationMixin],
@@ -39,11 +41,11 @@ export default {
       return errors;
     }
   },
+  components: {
+    realmSearch
+  },
 
   methods: {
-    submit() {
-      this.$v.$touch();
-    },
     clear() {
       this.$v.$reset();
       this.name = "";
