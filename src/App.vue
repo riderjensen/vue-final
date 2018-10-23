@@ -17,7 +17,7 @@
 		<router-link to="/search">
         	<v-list-tile>
           		<v-list-tile-content>
-            		<v-list-tile-title>Search a Name</v-list-tile-title>
+            		<v-list-tile-title>Generate a Character Name</v-list-tile-title>
           		</v-list-tile-content>
         	</v-list-tile>
 		</router-link>		
