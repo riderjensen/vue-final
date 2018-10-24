@@ -1,7 +1,7 @@
 <template>
   <div class="about">
-	<h2>Your charecter</h2>
-	<p>{{ userFaction }} {{ userRace }} {{ userClass }}</p>
+	<h2>Your character</h2>
+	<h4>{{ userFaction }} {{ userRace }} {{ userClass }}</h4>
 	<v-btn @click="restart">Restart</v-btn>
 	<v-layout v-if="!userFaction" v-for="item in information" :key="item.faction">
 		<FactionChoice  v-bind:msg="item.name" v-on:factionChoice="addFaction">
@@ -113,5 +113,9 @@ export default {
 h1 {
   text-align: center;
   width: 100%;
+  margin-bottom: 20px;
+}
+p {
+  padding: 20px;
 }
 </style>

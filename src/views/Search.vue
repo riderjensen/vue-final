@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div><h1>Generate a character name</h1>
     <UserSearch v-on:userSubmit="searchUser"/>
 	<div v-for="item in nameArray">
 	<NameCard v-bind:gender="item.gender">
