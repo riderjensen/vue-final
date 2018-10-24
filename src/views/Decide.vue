@@ -1,36 +1,74 @@
 <template>
   <div class="about">
-    <h1>This is a decider to help you choose a vanilla class</h1>
-	  <v-layout>
-	<FactionChoice msg="alliance" v-on:factionChoice="addFaction">
-		<h1>Alliance</h1>
-		<p>Information about the alliance here</p>
-	</FactionChoice>
-	<FactionChoice msg="horde" v-on:factionChoice="addFaction">
-		<h1>Horde</h1>
-		<p>Information about the horde here</p>
-	</FactionChoice>
+	<h2>Your charecter</h2>
+	<p>{{ userFaction }} {{ userRace }} {{ userClass }}</p>
+	<v-layout v-if="!userFaction" v-for="item in information" :key="item.faction">
+		<FactionChoice  v-bind:msg="item.name" v-on:factionChoice="addFaction">
+			<h1>{{ item.name }}</h1>
+			<p>{{ item.quickInfo}}</p>
+		</FactionChoice>
+	</v-layout>
+
+	<v-layout v-if="factionChosen" v-for="item in information[userFactionID].races" :key="item.races">
+		<RaceChoice  v-bind:msg="item.race" v-on:raceChoice="addRace">
+			<h1>{{ item.race }}</h1>
+			<p>{{ item.shortDesc}}</p>
+		</RaceChoice>
+	</v-layout>
+
+	<v-layout v-if="classChosen" v-for="(item, i) in information[userFactionID].races[userRaceID].classes">
+		<ClassChoice  v-bind:msg="item" v-on:classChoice="addClass">
+			<h1>{{ item }}</h1>
+		</ClassChoice>
 	</v-layout>
   </div>
+
 </template>
 
 <script>
 import FactionChoice from "@/components/FactionChoice.vue";
+import RaceChoice from "@/components/RaceChoice.vue";
+import ClassChoice from "@/components/ClassChoice.vue";
+
+import { info } from "../assets/wowinfo";
 
 export default {
   data: () => {
     return {
+      information: info,
       userFaction: "",
+      userFactionID: 0,
+      factionChosen: false,
+      classChosen: false,
+      userRaceID: 0,
       userRace: "",
       userClass: ""
     };
   },
   components: {
-    FactionChoice
+    FactionChoice,
+    RaceChoice,
+    ClassChoice
   },
   methods: {
     addFaction(faction) {
+      if (faction == "alliance") {
+        this.userFactionID = 0;
+      } else {
+        this.userFactionID = 1;
+      }
       this.userFaction = faction;
+      this.factionChosen = true;
+    },
+    addRace(race) {
+      this.userRace = race;
+      this.factionChosen = false;
+      this.classChosen = true;
+    },
+    addClass(useClass) {
+      console.log(useClass);
+      this.userClass = useClass;
+      this.classChosen = false;
     }
   }
 };
