@@ -1,7 +1,7 @@
 <template>
   <div><h1>Generate a character name</h1>
     <UserSearch v-on:userSubmit="searchUser"/>
-	<div v-for="item in nameArray">
+	<div v-for="item in nameArray" :key="item">
 	<NameCard v-bind:gender="item.gender">
 		<h2>{{ item.name }} {{ item.surname }}</h2>
 		<v-spacer></v-spacer>
