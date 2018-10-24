@@ -32,6 +32,7 @@ export default {
   methods: {
     searchUser(maxNum) {
       this.queryAmount = maxNum;
+      this.nameArray = [];
       axios
         .get(
           `http://uinames.com/api/${this.queryString}${this.queryAmount}`,
