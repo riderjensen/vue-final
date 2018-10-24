@@ -2,6 +2,7 @@
   <div class="about">
 	<h2>Your charecter</h2>
 	<p>{{ userFaction }} {{ userRace }} {{ userClass }}</p>
+	<v-btn @click="restart">Restart</v-btn>
 	<v-layout v-if="!userFaction" v-for="item in information" :key="item.faction">
 		<FactionChoice  v-bind:msg="item.name" v-on:factionChoice="addFaction">
 			<h1>{{ item.name }}</h1>
@@ -61,6 +62,32 @@ export default {
       this.factionChosen = true;
     },
     addRace(race) {
+      switch (race) {
+        case "human":
+          this.userRaceID = 0;
+          break;
+        case "dwarf":
+          this.userRaceID = 1;
+          break;
+        case "night-elf":
+          this.userRaceID = 2;
+          break;
+        case "gnome":
+          this.userRaceID = 3;
+          break;
+        case "orc":
+          this.userRaceID = 0;
+          break;
+        case "forsaken":
+          this.userRaceID = 1;
+          break;
+        case "tauren":
+          this.userRaceID = 2;
+          break;
+        case "troll":
+          this.userRaceID = 3;
+          break;
+      }
       this.userRace = race;
       this.factionChosen = false;
       this.classChosen = true;
@@ -68,6 +95,13 @@ export default {
     addClass(useClass) {
       console.log(useClass);
       this.userClass = useClass;
+      this.classChosen = false;
+    },
+    restart() {
+      this.userFaction = "";
+      this.userRace = "";
+      this.userClass = "";
+      this.factionChosen = false;
       this.classChosen = false;
     }
   }
