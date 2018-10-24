@@ -26,4 +26,7 @@ export default {
 .factionInt {
   font-size: 40px;
 }
+h1 {
+  text-align: center;
+}
 </style>

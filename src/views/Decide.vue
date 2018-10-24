@@ -19,7 +19,8 @@
 
 	<v-layout v-if="classChosen" v-for="(item, i) in information[userFactionID].races[userRaceID].classes">
 		<ClassChoice  v-bind:msg="item" v-on:classChoice="addClass">
-			<h1>{{ item }}</h1>
+			<h1>{{ item.name }}</h1>
+			<p>{{ item.desc}}</p>
 		</ClassChoice>
 	</v-layout>
   </div>
@@ -94,7 +95,7 @@ export default {
     },
     addClass(useClass) {
       console.log(useClass);
-      this.userClass = useClass;
+      this.userClass = useClass.name;
       this.classChosen = false;
     },
     restart() {
@@ -109,4 +110,8 @@ export default {
 </script>
 
 <style scoped>
+h1 {
+  text-align: center;
+  width: 100%;
+}
 </style>
