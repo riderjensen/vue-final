@@ -17,7 +17,7 @@
 		</RaceChoice>
 	</v-layout>
 
-	<v-layout v-if="classChosen" v-for="(item, i) in information[userFactionID].races[userRaceID].classes">
+	<v-layout v-if="classChosen" v-for="item in information[userFactionID].races[userRaceID].classes" :key="item.classes">
 		<ClassChoice  v-bind:msg="item" v-on:classChoice="addClass">
 			<h1>{{ item.name | toUppercase }}</h1>
 			<p>{{ item.desc}}</p>
