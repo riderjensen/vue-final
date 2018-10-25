@@ -1,25 +1,25 @@
 <template>
   <div class="about">
 	<h2>Your character</h2>
-	<h4>{{ userFaction }} {{ userRace }} {{ userClass }}</h4>
+	<h4>{{ userFaction | toUppercase }} {{ userRace | toUppercase }} {{ userClass | toUppercase }}</h4>
 	<v-btn @click="restart">Restart</v-btn>
 	<v-layout v-if="!userFaction" v-for="item in information" :key="item.faction">
 		<FactionChoice  v-bind:msg="item.name" v-on:factionChoice="addFaction">
-			<h1>{{ item.name }}</h1>
+			<h1>{{ item.name | toUppercase }}</h1>
 			<p>{{ item.quickInfo}}</p>
 		</FactionChoice>
 	</v-layout>
 
 	<v-layout v-if="factionChosen" v-for="item in information[userFactionID].races" :key="item.races">
 		<RaceChoice  v-bind:msg="item.race" v-on:raceChoice="addRace">
-			<h1>{{ item.race }}</h1>
+			<h1>{{ item.race | toUppercase }}</h1>
 			<p>{{ item.shortDesc}}</p>
 		</RaceChoice>
 	</v-layout>
 
 	<v-layout v-if="classChosen" v-for="(item, i) in information[userFactionID].races[userRaceID].classes">
 		<ClassChoice  v-bind:msg="item" v-on:classChoice="addClass">
-			<h1>{{ item.name }}</h1>
+			<h1>{{ item.name | toUppercase }}</h1>
 			<p>{{ item.desc}}</p>
 		</ClassChoice>
 	</v-layout>
@@ -104,6 +104,11 @@ export default {
       this.userClass = "";
       this.factionChosen = false;
       this.classChosen = false;
+    }
+  },
+  filters: {
+    toUppercase(value) {
+      return value.toUpperCase();
     }
   }
 };
