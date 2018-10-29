@@ -2,11 +2,13 @@
   <div><h1>Generate a character name</h1>
     <UserSearch v-on:userSubmit="searchUser"/>
 	<div v-for="item in nameArray" :key="item">
+		<transition name="highlight-clock" appear>
 	<NameCard v-bind:gender="item.gender">
 		<h2>{{ item.name }} {{ item.surname }}</h2>
 		<v-spacer></v-spacer>
 		<h4>Country - {{ item.region }}</h4>
 	</NameCard>
+		</transition>
 	</div>
   </div>
 </template>
@@ -50,4 +52,19 @@ export default {
 </script>
 
 <style scoped>
+.highlight-clock-enter {
+  opacity: 0;
+}
+.highlight-clock-enter-active {
+  transition: opacity 3s;
+  animation: move-in 1s ease-out forwards;
+}
+@keyframes move-in {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
 </style>

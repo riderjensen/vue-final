@@ -1,28 +1,68 @@
 <template>
   <div class="about">
-	<h2>Your character</h2>
-	<h4>{{ userFaction | toUppercase }} {{ userRace | toUppercase }} {{ userClass | toUppercase }}</h4>
-	<v-btn @click="restart">Restart</v-btn>
-	<v-layout v-if="!userFaction" v-for="item in information" :key="item.faction">
+	<h2 v-if="finished">Your character</h2>
+	<v-btn v-if="finished" @click="restart">Restart</v-btn>
+	<h2 v-if="!userFaction">Choose Your Faction</h2>
+	<h2 v-if="factionChosen">Choose Your Race</h2>
+	<h2 v-if="classChosen">Choose Your Class</h2>
+	
+	<v-layout row wrap v-if="!userFaction" >
+		    <v-flex xs12 v-for="item in information" :key="item.faction">
+				<transition name="highlight-clock" appear>
 		<FactionChoice  v-bind:msg="item.name" v-on:factionChoice="addFaction">
 			<h1>{{ item.name | toUppercase }}</h1>
+			<img :src="ourString + item.name + secString" />
 			<p>{{ item.quickInfo}}</p>
 		</FactionChoice>
+				</transition>
+		    </v-flex>
 	</v-layout>
 
-	<v-layout v-if="factionChosen" v-for="item in information[userFactionID].races" :key="item.races">
+	<v-layout v-if="factionChosen" xs12 sm6 v-for="item in information[userFactionID].races" :key="item.races">
+		<v-flex   >
+			<transition name="highlight-clock" appear>
 		<RaceChoice  v-bind:msg="item.race" v-on:raceChoice="addRace">
 			<h1>{{ item.race | toUppercase }}</h1>
+			<img :src="ourString + item.race + secString" />
 			<p>{{ item.shortDesc}}</p>
 		</RaceChoice>
+			</transition>
+		</v-flex>
 	</v-layout>
 
-	<v-layout v-if="classChosen" v-for="item in information[userFactionID].races[userRaceID].classes" :key="item.classes">
+	<v-layout v-if="classChosen" row wrap>
+		<v-flex xs12 sm6  v-for="item in information[userFactionID].races[userRaceID].classes" :key="item.classes">
+			<transition name="highlight-clock" appear>
 		<ClassChoice  v-bind:msg="item" v-on:classChoice="addClass">
 			<h1>{{ item.name | toUppercase }}</h1>
+			<img :src="ourString + item.name + pngString" />
 			<p>{{ item.desc}}</p>
 		</ClassChoice>
+			</transition>
+		</v-flex>
 	</v-layout>
+	<v-container  >
+	<v-layout v-if="finished" row wrap>
+		<v-flex xs12 sm4>
+			<div class="cont-pad">
+				<img :src="ourString + userFaction + secString" />
+				<h4>{{ userFaction | toUppercase }}</h4>
+			</div>
+		</v-flex>
+		<v-flex xs12 sm4>
+			<div class="cont-pad">
+				 <img :src="ourString + userRace + secString" />
+				 <h4>{{ userRace | toUppercase }}</h4>
+			</div>
+		
+			</v-flex>
+				<v-flex xs12 sm4>
+			<div class="cont-pad">
+				<img :src="ourString + userClass + pngString" />
+				<h4>{{ userClass | toUppercase }}</h4>
+			</div>
+		</v-flex>
+	</v-layout></v-container>
   </div>
 
 </template>
@@ -42,9 +82,13 @@ export default {
       userFactionID: 0,
       factionChosen: false,
       classChosen: false,
+      finished: false,
       userRaceID: 0,
       userRace: "",
-      userClass: ""
+      userClass: "",
+      ourString: "../",
+      secString: ".jpg",
+      pngString: ".png"
     };
   },
   components: {
@@ -94,9 +138,9 @@ export default {
       this.classChosen = true;
     },
     addClass(useClass) {
-      console.log(useClass);
       this.userClass = useClass.name;
       this.classChosen = false;
+      this.finished = true;
     },
     restart() {
       this.userFaction = "";
@@ -104,6 +148,7 @@ export default {
       this.userClass = "";
       this.factionChosen = false;
       this.classChosen = false;
+      this.finished = false;
     }
   },
   filters: {
@@ -122,5 +167,28 @@ h1 {
 }
 p {
   padding: 20px;
+}
+img {
+  max-width: 200px;
+  margin: auto;
+}
+.cont-pad img {
+  padding: 20px;
+}
+
+.highlight-clock-enter {
+  opacity: 0;
+}
+.highlight-clock-enter-active {
+  transition: opacity 3s;
+  animation: move-in 1s ease-out forwards;
+}
+@keyframes move-in {
+  from {
+    transform: translateY(10px);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 </style>
