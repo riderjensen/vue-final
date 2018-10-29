@@ -86,7 +86,7 @@ export const info = [{
 	},
 	{
 		"name": "horde",
-		"quickInfo": "In the past, the Horde referred to the orcs and their battle thralls from both Draenor and Azeroth, such as trolls and ogres (see more about the old Horde). Following its utter defeat at the end of the Second War, the old Horde's power was forever broken, allowing Thrall to awaken the dormant spirituality of his people and free them from the Burning Legion's control.During the events of the Third War, Thrall has made lasting bonds with the tauren chief Cairne Bloodhoof and the troll shadowhunter Vol'jin of the Darkspear clan. The ties between the three races is very close, as both share many similar cultural views. With the help of the tauren, both the orcs and the tribe of trolls have established a place for themselves in Kalimdor. Since then, certain ogre tribes, as well as the Forsaken (due to their lack of other options), have chosen to affiliate themselves with the Horde.",
+		"quickInfo": "Following its utter defeat at the end of the Second War, the old Horde's power was forever broken, allowing Thrall to awaken the dormant spirituality of his people and free them from the Burning Legion's control. During the events of the Third War, Thrall has made lasting bonds with the tauren chief Cairne Bloodhoof and the troll shadowhunter Vol'jin of the Darkspear clan. Since then, certain ogre tribes, as well as the Forsaken (due to their lack of other options), have chosen to affiliate themselves with the Horde.",
 		"races": [{
 				"race": "orc",
 				"classes": [{
