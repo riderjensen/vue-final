@@ -38,7 +38,7 @@
       <v-container fluid fill-height>
         <v-layout
           justify-center
-          align-center
+          
         >
           <v-flex text-xs-center>
 			  <router-view/>
@@ -80,10 +80,13 @@ export default {
 
 a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #3f51b5;
 }
 
 a.router-link-exact-active {
-  color: #42b983;
+  color: #3f51b5;
+}
+a.router-link-exact-active div {
+  background-color: #f5f5f5;
 }
 </style>
