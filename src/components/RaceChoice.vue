@@ -1,13 +1,12 @@
 <template>
 
-    <v-flex xs12 sm6 offset-sm3>
       <v-card class="margin">
         <v-card-title primary-title>
           <slot></slot>
         </v-card-title>
 		<v-btn v-on:click="$emit('raceChoice', msg)">Choose</v-btn>
       </v-card>
-    </v-flex>
+
   
 </template>
 
