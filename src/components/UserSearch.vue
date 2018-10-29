@@ -8,8 +8,9 @@
       @input="$v.maxNum.$touch()"
       @blur="$v.maxNum.$touch()"
     ></v-text-field>
+	<transition name="highlight-clock" appear>
     <v-btn v-on:click="$emit('userSubmit', maxNum)">submit</v-btn>
-    <v-btn @click="clear">clear</v-btn>
+	</transition>
   </form>
 </template>
 
@@ -34,19 +35,15 @@ export default {
     nameErrors() {
       const errors = [];
       if (!this.$v.maxNum.$dirty) return errors;
-      !this.$v.maxNum.maxLength &&
-        errors.push("No more than 500 names can be called");
-      parseInt(this.maxNum) > 500 &&
-        errors.push("No more than 500 names can be called");
+      !parseInt(this.maxNum) && errors.push("Please enter a number");
+
       parseInt(this.maxNum) < 1 &&
         errors.push("Please enter a number higher than 0");
+      parseInt(this.maxNum) > 500 &&
+        errors.push("No more than 500 names can be called");
+      !this.$v.maxNum.maxLength &&
+        errors.push("No more than 500 names can be called");
       return errors;
-    }
-  },
-  methods: {
-    clear() {
-      this.$v.$reset();
-      this.name = "";
     }
   }
 };
@@ -54,4 +51,19 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.highlight-clock-enter {
+  opacity: 0;
+}
+.highlight-clock-enter-active {
+  transition: opacity 3s;
+  animation: move-in 1s ease-out forwards;
+}
+@keyframes move-in {
+  from {
+    transform: translateY(10px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
 </style>
