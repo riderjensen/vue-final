@@ -6,7 +6,7 @@
 	<NameCard v-bind:gender="item.gender">
 		<h2>{{ item.name }} {{ item.surname }}</h2>
 		<v-spacer></v-spacer>
-		<h4>Country - {{ item.region }}</h4>
+		<v-btn color="info" @click="addName(item.name, item.surname)">Select</v-btn>
 	</NameCard>
 		</transition>
 	</div>
@@ -46,6 +46,10 @@ export default {
         .catch(function(error) {
           console.log(error);
         });
+    },
+    addName(name, surname) {
+      this.$store.state.firstName = name;
+      this.$store.state.lastName = surname;
     }
   }
 };

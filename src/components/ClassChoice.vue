@@ -15,7 +15,7 @@
 export default {
   name: "NameCard",
   props: {
-    msg: String
+    msg: Object
   }
 };
 </script>
