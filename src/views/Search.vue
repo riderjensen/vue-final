@@ -1,7 +1,8 @@
 <template>
   <div><h1>Generate a character name</h1>
+  <h3 v-if="showName">Your Chosen Name: {{ firstNombre }} {{ lastNomber }}</h3>
     <UserSearch v-on:userSubmit="searchUser"/>
-	<div v-for="item in nameArray" :key="item">
+	<div v-for="(item, i) in nameArray" :key="i">
 		<transition name="highlight-clock" appear>
 	<NameCard v-bind:gender="item.gender">
 		<h2>{{ item.name }} {{ item.surname }}</h2>
@@ -28,7 +29,10 @@ export default {
     return {
       queryString: "?amount=",
       queryAmount: "1",
-      nameArray: []
+      nameArray: [],
+      showName: false,
+      firstNombre: "",
+      lastNomber: ""
     };
   },
   methods: {
@@ -48,8 +52,11 @@ export default {
         });
     },
     addName(name, surname) {
+      this.firstNombre = name;
+      this.lastNomber = surname;
       this.$store.state.firstName = name;
       this.$store.state.lastName = surname;
+      this.showName = true;
     }
   }
 };
