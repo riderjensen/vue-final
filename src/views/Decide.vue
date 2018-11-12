@@ -2,6 +2,7 @@
   <div class="about">
 	<h2 v-if="finished">Your character</h2>
 	<v-btn v-if="finished" @click="restart">Restart</v-btn>
+	<v-btn v-if="finished" @click="home">Home</v-btn>
 	<h2 v-if="!userFaction">Choose Your Faction</h2>
 	<h2 v-if="factionChosen">Choose Your Race</h2>
 	<h2 v-if="classChosen">Choose Your Class</h2>
@@ -152,7 +153,10 @@ export default {
       this.factionChosen = false;
       this.classChosen = false;
       this.finished = false;
-    }
+	},
+	home() {
+		this.$router.push({ name: "home"})
+	}
   },
   filters: {
     toUppercase(value) {

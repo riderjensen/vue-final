@@ -56,7 +56,8 @@ export default {
       this.lastNomber = surname;
       this.$store.state.firstName = name;
       this.$store.state.lastName = surname;
-      this.showName = true;
+	  this.showName = true;
+	  this.$router.push({ name: "home"})
     }
   }
 };
