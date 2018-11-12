@@ -5,11 +5,11 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
 	state: {
-		firstName: 'Unchosen',
+		firstName: '',
 		lastName: '',
-		faction: 'Unchosen',
-		race: 'Unchosen',
-		class: 'Unchosen'
+		faction: '',
+		race: '',
+		class: ''
 	},
 	mutations: {},
 	actions: {}
