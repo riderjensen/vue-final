@@ -29,7 +29,7 @@
 
     <v-dialog
       v-model="dialog"
-      width="500"
+      width="550"
     >
       <v-btn
         slot="activator"
@@ -58,7 +58,7 @@
           <v-btn
             color="primary"
             flat
-            @click="dialog = false; removePic;"
+            @click="dialog = false;"
           >
             Close
           </v-btn>
@@ -72,78 +72,91 @@
 
 
 <script>
-import CommonColor from './CommonColor.vue';
-import html2canvas from 'html2canvas';
+import CommonColor from "./CommonColor.vue";
+import html2canvas from "html2canvas";
 
 export default {
-	name: 'Sidebar',
-	props: ['squareGrid'],
-	components: {
-		CommonColor
-	},
-	data: () => {
-		return {
-			ourColor: '',
-			commonColorsArray: ['black','white','gray','red', 'green', 'blue', 'yellow', 'tan', 'rebeccapurple'],
-			ourPixelNumbers: 10,
-			dialog: false
-		}
-	},
-	watch: {
-		ourColor: function () {
-			this.$emit('color', this.ourColor);
-		}
-	},
-	methods: {
-		pushColor(color) {
-			if(!this.commonColorsArray.includes(color)){
-				this.commonColorsArray.push(color);
-			}
-		},
-		deleteColor(color) {
-			if(this.commonColorsArray.includes(color)){
-				let index = this.commonColorsArray.indexOf(color);
-				this.commonColorsArray.splice(index, 1);
-			}
-		},
-		setColor(incColor) {
-			this.ourColor = incColor;
-		},
-		exportImg() {
-			html2canvas(document.querySelector("#myTestHere"), {
-				canvas: null
-			}).then(function(canvas) {
-				document.querySelector('#ourPicHere').appendChild(canvas);
-			})
-			
-			}
-		},
-		
-	}
+  name: "Sidebar",
+  props: ["squareGrid"],
+  components: {
+    CommonColor
+  },
+  data: () => {
+    return {
+      ourColor: "",
+      commonColorsArray: [
+        "black",
+        "white",
+        "gray",
+        "red",
+        "green",
+        "blue",
+        "yellow",
+        "tan",
+        "rebeccapurple"
+      ],
+      ourPixelNumbers: 10,
+      dialog: false
+    };
+  },
+  watch: {
+    ourColor: function() {
+      this.$emit("color", this.ourColor);
+    }
+  },
+  methods: {
+    pushColor(color) {
+      if (!this.commonColorsArray.includes(color)) {
+        this.commonColorsArray.push(color);
+      }
+    },
+    deleteColor(color) {
+      if (this.commonColorsArray.includes(color)) {
+        let index = this.commonColorsArray.indexOf(color);
+        this.commonColorsArray.splice(index, 1);
+      }
+    },
+    setColor(incColor) {
+      this.ourColor = incColor;
+    },
+    exportImg() {
+      let element = document.querySelector("#ourPicHere");
+      while (element.firstChild) {
+        element.removeChild(element.firstChild);
+      }
+
+      html2canvas(document.querySelector("#myTestHere"), {
+        canvas: null
+      }).then(function(canvas) {
+        document.querySelector("#ourPicHere").appendChild(canvas);
+      });
+    }
+  }
+};
 </script>
 
 <style scoped>
-div.side{
-	padding: 10px;
-	height: 100%;
-	background-color: #eee;
+div.side {
+  padding: 10px;
+  height: 100%;
+  background-color: #eee;
 }
-span.colorShow{
-	display: inline-block;
-	height: 15px;
-	width: 15px;
+span.colorShow {
+  display: inline-block;
+  height: 15px;
+  width: 15px;
 }
-.flexRow{
-	display: flex;
-	flex-wrap: wrap;
+.flexRow {
+  display: flex;
+  flex-wrap: wrap;
 }
-button{
-	margin-left: 10px;
+button {
+  margin-left: 10px;
 }
-.text-center{
-	text-align: center;
+.text-center {
+  text-align: center;
 }
-.hidden{
-	display: none;
+.hidden {
+  display: none;
 }
 </style>
