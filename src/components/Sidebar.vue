@@ -1,16 +1,13 @@
 <template>
   <div class="side">
 	  <div class="input-group ">
-		  <p class="text-center">Click a button or enter a number</p>
+		  <p class="text-center">Click to pick a canvas size</p>
 		<p class="text-center">
 		<button class="btn btn-primary" @click="$emit('pixelNum', 10)">10</button>
 		<button class="btn btn-primary" @click="$emit('pixelNum', 20)">20</button>
 		<button class="btn btn-primary" @click="$emit('pixelNum', 25)">25</button>
 		<button class="btn btn-primary" @click="$emit('pixelNum', 30)">30</button>
 		</p>
-		<br />
-		<p>
-		<input type="num" class="form-control" placeholder="Number" v-model="ourPixelNumbers" v-on:keyup="$emit('pixelNum', ourPixelNumbers)" /></p>
 		<br />
 	</div>
 		<br />
@@ -31,7 +28,7 @@
 	</div>
 	<v-dialog
       v-model="dialog"
-      width="500"
+      :style="{maxWidth: squareGrid}"
     >
       <v-btn
         slot="activator"
@@ -42,24 +39,11 @@
         Export Picture
       </v-btn>
 
-      <v-card>
+      <v-card >
 
         <v-card-text id="ourPicHere">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
         </v-card-text>
-
-        <v-divider></v-divider>
-
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn
-            color="primary"
-            flat
-            @click="dialog = false"
-          >
-            I accept
-          </v-btn>
-        </v-card-actions>
       </v-card>
     </v-dialog>
   </div>
@@ -73,6 +57,7 @@ import html2canvas from 'html2canvas';
 
 export default {
 	name: 'Sidebar',
+	props: ['squareGrid'],
 	components: {
 		CommonColor
 	},
@@ -105,11 +90,10 @@ export default {
 			this.ourColor = incColor;
 		},
 		exportImg() {
-			// remove styling on each pixel block and 
 			html2canvas(document.querySelector("#myTestHere"), {
 				canvas: null
 			}).then(function(canvas) {
-    			document.querySelector('#ourPicHere').appendChild(canvas);
+				document.querySelector('#ourPicHere').appendChild(canvas);
 			})
 			
 			}
@@ -137,5 +121,8 @@ button{
 }
 .text-center{
 	text-align: center;
+}
+.hidden{
+	display: none;
 }
 </style>
