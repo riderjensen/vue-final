@@ -23,9 +23,6 @@ export default {
 
 <style scoped>
 div{
-	border-style: solid;
-    border-width: 1px;
-	border-color: #eee;
 	height: 20px;
 	width: 20px;
 	background-color: #fff;
