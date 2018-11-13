@@ -13,7 +13,6 @@
 		<input type="num" class="form-control" placeholder="Number" v-model="ourPixelNumbers" v-on:keyup="$emit('pixelNum', ourPixelNumbers)" /></p>
 		<br />
 	</div>
-		<button class="btn btn-primary" @click="exportImg">Export the picture</button>
 		<br />
 		<br />
 	<div class="input-group mb-3">
@@ -30,6 +29,39 @@
 			<CommonColor :smallColor="index" v-on:sendsmallcolor="setColor" />
 		</div>
 	</div>
+	<v-dialog
+      v-model="dialog"
+      width="500"
+    >
+      <v-btn
+        slot="activator"
+        color="red lighten-2"
+        dark 
+		@click="exportImg"
+      >
+        Export Picture
+      </v-btn>
+
+      <v-card>
+
+        <v-card-text id="ourPicHere">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </v-card-text>
+
+        <v-divider></v-divider>
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            color="primary"
+            flat
+            @click="dialog = false"
+          >
+            I accept
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 
@@ -48,7 +80,8 @@ export default {
 		return {
 			ourColor: '',
 			commonColorsArray: ['black','white','gray','red', 'green', 'blue', 'yellow', 'tan', 'rebeccapurple'],
-			ourPixelNumbers: 10
+			ourPixelNumbers: 10,
+			dialog: false
 		}
 	},
 	watch: {
@@ -76,7 +109,7 @@ export default {
 			html2canvas(document.querySelector("#myTestHere"), {
 				canvas: null
 			}).then(function(canvas) {
-    			document.body.appendChild(canvas);
+    			document.querySelector('#ourPicHere').appendChild(canvas);
 			})
 			
 			}
