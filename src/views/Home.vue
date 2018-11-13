@@ -54,9 +54,8 @@ export default {
     }
   }
 };
-// @ is an alias to /src
-
-let countDownDate = new Date("June 9, 2019 00:00:00").getTime();
+if(document.getElementById("clock")){
+	let countDownDate = new Date("June 9, 2019 00:00:00").getTime();
 
 // Update the count down every 1 second
 let x = setInterval(function() {
@@ -82,6 +81,9 @@ let x = setInterval(function() {
     document.getElementById("clock").innerHTML = "EXPIRED";
   }
 }, 1000);
+}
+
+
 </script>
 
 <style scoped>
