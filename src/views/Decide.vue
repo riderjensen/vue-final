@@ -153,10 +153,10 @@ export default {
       this.factionChosen = false;
       this.classChosen = false;
       this.finished = false;
-	},
-	home() {
-		this.$router.push({ name: "home"})
-	}
+    },
+    home() {
+      this.$router.push({ name: "home" });
+    }
   },
   filters: {
     toUppercase(value) {
