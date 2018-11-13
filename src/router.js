@@ -21,6 +21,12 @@ export default new Router({
 			name: "decide",
 			component: () =>
 				import( /* webpackChunkName: "decide" */ "./views/Decide.vue")
+		},
+		{
+			path: "/pixel",
+			name: "pixel",
+			component: () =>
+				import( /* webpackChunkName: "pixel" */ "./views/Pixel.vue")
 		}
 	]
 });

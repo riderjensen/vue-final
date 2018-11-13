@@ -20,7 +20,7 @@ import NameCard from "@/components/NameCard.vue";
 import axios from "axios";
 
 export default {
-  name: "home",
+  name: "search",
   components: {
     UserSearch,
     NameCard

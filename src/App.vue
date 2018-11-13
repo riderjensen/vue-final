@@ -28,6 +28,13 @@
           		</v-list-tile-content>
         	</v-list-tile>
 		</router-link>
+		<router-link to="/pixel">
+        	<v-list-tile>
+          		<v-list-tile-content>
+            		<v-list-tile-title>Create an Icon</v-list-tile-title>
+          		</v-list-tile-content>
+        	</v-list-tile>
+		</router-link>
       </v-list>
     </v-navigation-drawer>
     <v-toolbar color="indigo" dark fixed app clipped-left>
