@@ -83,6 +83,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  /* line-height: 1.4; */
 }
 
 a {
@@ -96,4 +97,5 @@ a.router-link-exact-active {
 a.router-link-exact-active div {
   background-color: #f5f5f5;
 }
+
 </style>

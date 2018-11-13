@@ -4,9 +4,9 @@
 		  <p class="text-center">Click to pick a canvas size</p>
 		<p class="text-center">
 		<button class="btn btn-primary" @click="$emit('pixelNum', 10)">10</button>
+		<button class="btn btn-primary" @click="$emit('pixelNum', 15)">15</button>
 		<button class="btn btn-primary" @click="$emit('pixelNum', 20)">20</button>
 		<button class="btn btn-primary" @click="$emit('pixelNum', 25)">25</button>
-		<button class="btn btn-primary" @click="$emit('pixelNum', 30)">30</button>
 		</p>
 		<br />
 	</div>
@@ -26,26 +26,46 @@
 			<CommonColor :smallColor="index" v-on:sendsmallcolor="setColor" />
 		</div>
 	</div>
-	<v-dialog
+
+    <v-dialog
       v-model="dialog"
-      :style="{maxWidth: squareGrid}"
+      width="500"
     >
       <v-btn
         slot="activator"
         color="red lighten-2"
-        dark 
-		@click="exportImg"
+        dark
+		@click="exportImg()"
       >
-        Export Picture
+        Export Image
       </v-btn>
 
-      <v-card >
+      <v-card>
+        <v-card-title
+          class="headline grey lighten-2"
+          primary-title
+        >
+          Export Image
+        </v-card-title>
 
         <v-card-text id="ourPicHere">
+               </v-card-text>
 
-        </v-card-text>
+        <v-divider></v-divider>
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            color="primary"
+            flat
+            @click="dialog = false; removePic;"
+          >
+            Close
+          </v-btn>
+        </v-card-actions>
       </v-card>
     </v-dialog>
+
   </div>
 </template>
 
@@ -97,7 +117,8 @@ export default {
 			})
 			
 			}
-		}
+		},
+		
 	}
 </script>
 
