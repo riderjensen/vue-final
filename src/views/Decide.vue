@@ -141,9 +141,9 @@ export default {
     addClass(useClass) {
       this.userClass = useClass.name;
       this.classChosen = false;
-      this.$store.state.faction = this.userFaction;
-      this.$store.state.race = this.userRace;
-      this.$store.state.class = this.userClass;
+	  this.$store.dispatch('addFaction', this.userFaction);
+	  this.$store.dispatch('addRace', this.userRace);
+	  this.$store.dispatch('addClass', this.userClass);
       this.finished = true;
     },
     restart() {
