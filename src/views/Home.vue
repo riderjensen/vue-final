@@ -32,25 +32,25 @@
 export default {
   computed: {
     ourName() {
-      return this.$store.state.firstName + " " + this.$store.state.lastName;
+      return this.$store.getters.getFirstName + " " + this.$store.getters.getLastName;
     },
     ourFaction() {
-      return this.$store.state.faction;
+      return this.$store.getters.getFaction;
     },
     ourRace() {
-      return this.$store.state.race;
+      return this.$store.getters.getRace;
     },
     ourClass() {
-      return this.$store.state.class;
+      return this.$store.getters.getClass;
     }
   },
   methods: {
     resetStore() {
-      this.$store.state.firstName = "";
-      this.$store.state.lastName = "";
-      this.$store.state.faction = "";
-      this.$store.state.race = "";
-      this.$store.state.class = "";
+	this.$store.dispatch('addFaction', '');
+	  this.$store.dispatch('addRace', '');
+	  this.$store.dispatch('addClass', '');
+	  this.$store.dispatch('addFirstName', '');
+	  this.$store.dispatch('addLastName', '');
     }
   }
 };
