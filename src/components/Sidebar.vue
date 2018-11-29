@@ -52,7 +52,7 @@
                </v-card-text>
 
         <v-divider></v-divider>
-
+		<p>Right click on the picture to save it</p>
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn
