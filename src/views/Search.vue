@@ -41,7 +41,7 @@ export default {
       this.nameArray = [];
       axios
         .get(
-          `http://uinames.com/api/${this.queryString}${this.queryAmount}`,
+          `https://uinames.com/api/${this.queryString}${this.queryAmount}`,
           {}
         )
         .then(response => {
