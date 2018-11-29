@@ -1,5 +1,5 @@
 <template>
-      <v-card class="margin" style="padding-bottom: 20px;">
+      <v-card class="margin" style="padding-bottom: 20px; height: 93%">
         <v-card-title primary-title>
           <slot></slot>
         </v-card-title>
