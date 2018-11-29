@@ -32,7 +32,7 @@
 [Router.js](https://github.com/riderjensen/vue-final-rider/blob/master/src/router.js)
 
 11. Manage your application's state using vuex.  
-[Store.js](https://github.com/riderjensen/vue-final-rider/blob/master/src/store.js)
+[Store.js](https://github.com/riderjensen/vue-final-rider/blob/master/src/store.js) and [Decide.vue](https://github.com/riderjensen/vue-final-rider/blob/master/src/views/Decide.vue)
 
 12. Structure, document, and deploy your final project code according to common industry practices.   
 [Code](https://github.com/riderjensen/vue-final-rider) and [Working link](https://vibrant-roentgen-78f4f9.netlify.com/#/)
