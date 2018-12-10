@@ -1,71 +1,81 @@
 <template>
   <div class="about">
-	<h2 v-if="finished">Your character</h2>
-	<v-btn v-if="finished" @click="restart">Restart</v-btn>
-	<v-btn v-if="finished" @click="home">Home</v-btn>
-	<h2 v-if="!userFaction">Choose Your Faction</h2>
-	<h2 v-if="factionChosen">Choose Your Race</h2>
-	<h2 v-if="classChosen">Choose Your Class</h2>
-	
-	<v-layout row wrap v-if="!userFaction" >
-		    <v-flex xs12 v-for="item in information" :key="item.faction">
-				<transition name="highlight-clock" appear>
-		<FactionChoice  v-bind:msg="item.name" v-on:factionChoice="addFaction">
-			<h1>{{ item.name | toUppercase }}</h1>
-			<img :src="ourString + item.name + secString" />
-			<p>{{ item.quickInfo}}</p>
-		</FactionChoice>
-				</transition>
-		    </v-flex>
-	</v-layout>
+    <h2 v-if="finished">Your character</h2>
+    <v-btn v-if="finished" @click="restart">Restart</v-btn>
+    <v-btn v-if="finished" @click="home">Home</v-btn>
+    <h2 v-if="!userFaction">Choose Your Faction</h2>
+    <h2 v-if="factionChosen">Choose Your Race</h2>
+    <h2 v-if="classChosen">Choose Your Class</h2>
 
-	<v-layout v-if="factionChosen" xs12 sm6 v-for="item in information[userFactionID].races" :key="item.races">
-		<v-flex   >
-			<transition name="highlight-clock" appear>
-		<RaceChoice  v-bind:msg="item.race" v-on:raceChoice="addRace">
-			<h1>{{ item.race | toUppercase }}</h1>
-			<img :src="ourString + item.race + secString" />
-			<p>{{ item.shortDesc}}</p>
-		</RaceChoice>
-			</transition>
-		</v-flex>
-	</v-layout>
+    <v-layout row wrap v-if="!userFaction">
+      <v-flex xs12 v-for="item in information" :key="item.faction">
+        <transition name="highlight-clock" appear>
+          <FactionChoice v-bind:msg="item.name" v-on:factionChoice="addFaction">
+            <h1>{{ item.name | toUppercase }}</h1>
+            <img :src="ourString + item.name + secString">
+            <p>{{ item.quickInfo}}</p>
+          </FactionChoice>
+        </transition>
+      </v-flex>
+    </v-layout>
 
-	<v-layout v-if="classChosen" row wrap>
-		<v-flex xs12 sm6  v-for="item in information[userFactionID].races[userRaceID].classes" :key="item.classes">
-			<transition name="highlight-clock" appear>
-		<ClassChoice  v-bind:msg="item" v-on:classChoice="addClass">
-			<h1>{{ item.name | toUppercase }}</h1>
-			<img :src="ourString + item.name + pngString" />
-			<p>{{ item.desc}}</p>
-		</ClassChoice>
-			</transition>
-		</v-flex>
-	</v-layout>
-	<v-container  >
-	<v-layout v-if="finished" row wrap>
-		<v-flex xs12 sm4>
-			<div class="cont-pad">
-				<img :src="ourString + userFaction + secString" />
-				<h4>{{ userFaction | toUppercase }}</h4>
-			</div>
-		</v-flex>
-		<v-flex xs12 sm4>
-			<div class="cont-pad">
-				 <img :src="ourString + userRace + secString" />
-				 <h4>{{ userRace | toUppercase }}</h4>
-			</div>
-		
-			</v-flex>
-				<v-flex xs12 sm4>
-			<div class="cont-pad">
-				<img :src="ourString + userClass + pngString" />
-				<h4>{{ userClass | toUppercase }}</h4>
-			</div>
-		</v-flex>
-	</v-layout></v-container>
+    <v-layout
+      v-if="factionChosen"
+      xs12
+      sm6
+      v-for="item in information[userFactionID].races"
+      :key="item.races"
+    >
+      <v-flex>
+        <transition name="highlight-clock" appear>
+          <RaceChoice v-bind:msg="item.race" v-on:raceChoice="addRace">
+            <h1>{{ item.race | toUppercase }}</h1>
+            <img :src="ourString + item.race + secString">
+            <p>{{ item.shortDesc}}</p>
+          </RaceChoice>
+        </transition>
+      </v-flex>
+    </v-layout>
+
+    <v-layout v-if="classChosen" row wrap>
+      <v-flex
+        xs12
+        sm6
+        v-for="item in information[userFactionID].races[userRaceID].classes"
+        :key="item.classes"
+      >
+        <transition name="highlight-clock" appear>
+          <ClassChoice v-bind:msg="item" v-on:classChoice="addClass">
+            <h1>{{ item.name | toUppercase }}</h1>
+            <img :src="ourString + item.name + pngString">
+            <p style="margin-bottom: 70px;">{{ item.desc}}</p>
+          </ClassChoice>
+        </transition>
+      </v-flex>
+    </v-layout>
+    <v-container>
+      <v-layout v-if="finished" row wrap>
+        <v-flex xs12 sm4>
+          <div class="cont-pad">
+            <img :src="ourString + userFaction + secString">
+            <h4>{{ userFaction | toUppercase }}</h4>
+          </div>
+        </v-flex>
+        <v-flex xs12 sm4>
+          <div class="cont-pad">
+            <img :src="ourString + userRace + secString">
+            <h4>{{ userRace | toUppercase }}</h4>
+          </div>
+        </v-flex>
+        <v-flex xs12 sm4>
+          <div class="cont-pad">
+            <img :src="ourString + userClass + pngString">
+            <h4>{{ userClass | toUppercase }}</h4>
+          </div>
+        </v-flex>
+      </v-layout>
+    </v-container>
   </div>
-
 </template>
 
 <script>
@@ -106,6 +116,7 @@ export default {
       }
       this.userFaction = faction;
       this.factionChosen = true;
+      window.scrollTo(0, 0);
     },
     addRace(race) {
       switch (race) {
@@ -137,14 +148,16 @@ export default {
       this.userRace = race;
       this.factionChosen = false;
       this.classChosen = true;
+      window.scrollTo(0, 0);
     },
     addClass(useClass) {
       this.userClass = useClass.name;
       this.classChosen = false;
-	  this.$store.dispatch('addFaction', this.userFaction);
-	  this.$store.dispatch('addRace', this.userRace);
-	  this.$store.dispatch('addClass', this.userClass);
+      this.$store.dispatch("addFaction", this.userFaction);
+      this.$store.dispatch("addRace", this.userRace);
+      this.$store.dispatch("addClass", this.userClass);
       this.finished = true;
+      window.scrollTo(0, 0);
     },
     restart() {
       this.userFaction = "";
