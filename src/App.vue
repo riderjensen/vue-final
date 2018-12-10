@@ -1,6 +1,6 @@
 <template>
   <v-app id="inspire">
-    <v-navigation-drawer v-model="drawer" fixed app clipped>
+    <v-navigation-drawer v-model="drawer" app clipped fixed>
       <v-list dense>
         <router-link to="/">
           <v-list-tile>
@@ -45,7 +45,7 @@
         </v-layout>
       </v-container>
     </v-content>
-    <v-footer color="red" absolute="true" app>
+    <v-footer color="red" app>
       <span class="white--text">&copy; 2017</span>
     </v-footer>
   </v-app>
@@ -74,7 +74,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  /* line-height: 1.4; */
 }
 
 a {
