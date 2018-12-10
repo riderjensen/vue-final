@@ -16,9 +16,6 @@
         <br>A demo of the game was available at BlizzCon 2018, and was downloadable on home computers for anyone who purchased a BlizzCon ticket or virtual ticket. The servers became available when Opening Ceremony started at BlizzCon 2018 and was set to end on November 8, but was extended until November 12. Players started at level 15, and the only available zones were Westfall and the Barrens. It was based on patch 1.13.0, essentially patch 1.12.0 ported to a modern infrastructure. The first day of the demo, there was a playtime limit of a cumulative 60 minutes with a cooldown of 90 minutes, applied through the BlizzCon Exhaustion debuff. The debuff was removed on the second day of BlizzCon 2018.
       </p>
     </div>
-
-    <h3>Speculative count down clock</h3>
-    <h3 id="clock"></h3>
     <br>
     <br>
     <v-flex xs12 sm4 offset-sm4>
@@ -73,33 +70,6 @@ export default {
     }
   }
 };
-
-let countDownDate = new Date("June 9, 2019 00:00:00").getTime();
-
-// Update the count down every 1 second
-let x = setInterval(function() {
-  // Get todays date and time
-  let now = new Date().getTime();
-
-  // Find the distance between now and the count down date
-  let distance = countDownDate - now;
-
-  // Time calculations for days, hours, minutes and seconds
-  let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-  // Display the result in the element with id="demo"
-  document.getElementById("clock").innerHTML =
-    days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-
-  // If the count down is finished, write some text
-  if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("clock").innerHTML = "EXPIRED";
-  }
-}, 1000);
 </script>
 
 <style scoped>
