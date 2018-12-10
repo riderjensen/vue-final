@@ -1,63 +1,54 @@
 <template>
- <v-app id="inspire">
-    <v-navigation-drawer
-      v-model="drawer"
-      fixed
-      app
-	  clipped
-    >
+  <v-app id="inspire">
+    <v-navigation-drawer v-model="drawer" fixed app clipped>
       <v-list dense>
-		<router-link to="/">
-        	<v-list-tile>
-          		<v-list-tile-content>
-            		<v-list-tile-title>Home</v-list-tile-title>
-          		</v-list-tile-content>
-        	</v-list-tile>
-		</router-link>
-		<router-link to="/search">
-        	<v-list-tile>
-          		<v-list-tile-content>
-            		<v-list-tile-title>Generate a Character Name</v-list-tile-title>
-          		</v-list-tile-content>
-        	</v-list-tile>
-		</router-link>		
-		<router-link to="/decide">
-        	<v-list-tile>
-          		<v-list-tile-content>
-            		<v-list-tile-title>Vanilla Class Chooser</v-list-tile-title>
-          		</v-list-tile-content>
-        	</v-list-tile>
-		</router-link>
-		<router-link to="/pixel">
-        	<v-list-tile>
-          		<v-list-tile-content>
-            		<v-list-tile-title>Create an Icon</v-list-tile-title>
-          		</v-list-tile-content>
-        	</v-list-tile>
-		</router-link>
+        <router-link to="/">
+          <v-list-tile>
+            <v-list-tile-content>
+              <v-list-tile-title>Home</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </router-link>
+        <router-link to="/search">
+          <v-list-tile>
+            <v-list-tile-content>
+              <v-list-tile-title>Generate a Character Name</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </router-link>
+        <router-link to="/decide">
+          <v-list-tile>
+            <v-list-tile-content>
+              <v-list-tile-title>Vanilla Class Chooser</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </router-link>
+        <router-link to="/pixel">
+          <v-list-tile>
+            <v-list-tile-content>
+              <v-list-tile-title>Create an Icon</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </router-link>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar color="indigo" dark fixed app clipped-left>
+    <v-toolbar color="red" dark fixed app clipped-left>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title>Application</v-toolbar-title>
+      <v-toolbar-title>WOW Classic Helper</v-toolbar-title>
     </v-toolbar>
     <v-content>
-      <v-container fluid fill-height>
-        <v-layout
-          justify-center
-          
-        >
+      <v-container style="padding: 0; padding-bottom: 20px" fluid fill-height>
+        <v-layout justify-center>
           <v-flex text-xs-center>
-			  <router-view/>
+            <router-view/>
           </v-flex>
         </v-layout>
       </v-container>
     </v-content>
-    <v-footer color="indigo" app>
+    <v-footer color="red" absolute="true" app>
       <span class="white--text">&copy; 2017</span>
     </v-footer>
   </v-app>
-
 </template>
 
 <script>
