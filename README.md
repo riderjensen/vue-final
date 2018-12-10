@@ -1,5 +1,6 @@
 ## Rider Final Vue Project
 
+[Netlify link](https://vibrant-roentgen-78f4f9.netlify.com/#/)
 
 1. Effectively use conditional logic and JavaScript array methods to render large lists.  
 [Decide.vue](https://github.com/riderjensen/vue-final-rider/blob/master/src/views/Decide.vue)
@@ -35,4 +36,4 @@
 [Store.js](https://github.com/riderjensen/vue-final-rider/blob/master/src/store.js) and [Decide.vue](https://github.com/riderjensen/vue-final-rider/blob/master/src/views/Decide.vue)
 
 12. Structure, document, and deploy your final project code according to common industry practices.   
-[Code](https://github.com/riderjensen/vue-final-rider) and [Working link](https://vibrant-roentgen-78f4f9.netlify.com/#/)
+[Code](https://github.com/riderjensen/vue-final-rider)
